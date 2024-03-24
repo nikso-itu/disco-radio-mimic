@@ -1,0 +1,1 @@
+option('hostname', type : 'string', value : 'RADIO', description : 'Hostname and promt')
