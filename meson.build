@@ -19,7 +19,6 @@ project('radio', 'c',subproject_dir: 'lib',default_options: [
 sources = files([
 	'src/main.c',
 	'src/serial.c',
-    'src/radio_params.c',
     'src/radio.c',
     'src/vmem_image_buffer.c',
 ])
