@@ -11,7 +11,7 @@
 
 int image_count = 0;
 
-char* read_image_data()
+unsigned char *read_image_data()
 {
     /* Fetch tail pointer */
     uint32_t tail = param_get_uint32(&buffer_tail);
@@ -25,29 +25,29 @@ char* read_image_data()
 
     /* Find size of next image in buffer */
     size_t image_size_buf;
-    vmem_file_read(&vmem_image_buffer, tail, image_size_buf, sizeof(size_t));
+    vmem_file_read(&vmem_image_buffer, tail, &image_size_buf, sizeof(size_t));
 
     /* Fetch image data from buffer */
-    char * image_data[image_size_buf];
+    unsigned char *image_data = (unsigned char *)malloc(image_size_buf);
     vmem_file_read(&vmem_image_buffer, tail + sizeof(size_t), image_data, image_size_buf);
     
     /* Set tail to point to next image */
     param_set_uint32(&buffer_tail, tail + sizeof(size_t) + image_size_buf);
 
-    printf("Read data of size %d from image buffer.\n", image_size_buf);
+    printf("Read data of size %ld from image buffer.\n", image_size_buf);
     return image_data;
 }
 
 
-void save_image(const char *filename_base, const char * image_data)
-{
+void save_image(const char *filename_base, const unsigned char * image_data)
+{    
     char filename[20];
     sprintf(filename, "%s%d.png", filename_base, image_count++);
     
     /* Hardcoded values for sim_image.png */
-    int channels = 4;
-    int width = 950;
-    int height = 1373;
+    int channels = 1;
+    int width = 461;
+    int height = 380;
 
     int stride = width * channels * sizeof(uint8_t);
 
@@ -82,7 +82,12 @@ void callback_setup(param_t *param, int index)
 
 void callback_run(param_t *param, int index)
 {
-    char* image = read_image_data();
+    if (!param_get_uint8(param)) return;
+    
+    unsigned char *image = read_image_data();
+
+    if (image == NULL) return;
+    
     save_image("image", image);
 
     // Turn off radio when finished
