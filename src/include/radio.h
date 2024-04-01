@@ -6,8 +6,8 @@
 #include "vmem_image_buffer.h"
 
 /* Parameters for keeping track of image buffer head and tail */
-PARAM_DEFINE_STATIC_VMEM(PARAMID_IMAGE_BUFFER_HEAD, buffer_head, PARAM_TYPE_UINT32, -1, 0, PM_CONF, NULL, NULL, image_buffer, VMEM_IMAGE_BUFFER_HEAD, "Write head of image data buffer");
-PARAM_DEFINE_STATIC_VMEM(PARAMID_IMAGE_BUFFER_TAIL, buffer_tail, PARAM_TYPE_UINT32, -1, 0, PM_CONF, NULL, NULL, image_buffer, VMEM_IMAGE_BUFFER_TAIL, "Tail to read image data from buffer");
+PARAM_DEFINE_STATIC_VMEM(PARAMID_IMAGE_BUFFER_HEAD, buffer_head, PARAM_TYPE_UINT64, -1, 0, PM_CONF, NULL, NULL, image_buffer, VMEM_IMAGE_BUFFER_HEAD, "Write head of image data buffer");
+PARAM_DEFINE_STATIC_VMEM(PARAMID_IMAGE_BUFFER_TAIL, buffer_tail, PARAM_TYPE_UINT64, -1, 0, PM_CONF, NULL, NULL, image_buffer, VMEM_IMAGE_BUFFER_TAIL, "Tail to read image data from buffer");
 
 /* Parameter for setting up radio params */
 static uint8_t _radio_setup = 0;

@@ -14,8 +14,8 @@ int image_count = 0;
 unsigned char *read_image_data()
 {
     /* Fetch tail pointer */
-    uint32_t tail = param_get_uint32(&buffer_tail);
-    uint32_t head = param_get_uint32(&buffer_head);
+    uint64_t tail = param_get_uint64(&buffer_tail);
+    uint64_t head = param_get_uint64(&buffer_head);
 
     /* Guard against empty buffer */
     if (tail == head) {
@@ -32,7 +32,7 @@ unsigned char *read_image_data()
     vmem_file_read(&vmem_image_buffer, tail + sizeof(size_t), image_data, image_size_buf);
     
     /* Set tail to point to next image */
-    param_set_uint32(&buffer_tail, tail + sizeof(size_t) + image_size_buf);
+    param_set_uint64(&buffer_tail, tail + sizeof(size_t) + image_size_buf);
 
     printf("Read data of size %ld from image buffer.\n", image_size_buf);
     return image_data;
@@ -69,8 +69,8 @@ void callback_setup(param_t *param, int index)
         printf("callback setup: test\n");
 
         /* Set head and tail to point to start of data */
-        param_set_uint32(&buffer_head, VMEM_IMAGE_BUFFER_DATA);
-        param_set_uint32(&buffer_tail, VMEM_IMAGE_BUFFER_DATA);
+        param_set_uint64(&buffer_head, VMEM_IMAGE_BUFFER_DATA);
+        param_set_uint64(&buffer_tail, VMEM_IMAGE_BUFFER_DATA);
     } else
     {
         return;
