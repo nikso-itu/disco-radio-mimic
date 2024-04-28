@@ -19,16 +19,13 @@ project('radio', 'c',subproject_dir: 'lib',default_options: [
 sources = files([
 	'src/main.c',
 	'src/serial.c',
-    'src/radio.c',
-    'src/vmem_image_buffer.c',
 ])
 
 dirs = include_directories('src/include')
 
 csp_dep = dependency('csp', fallback: ['csp', 'csp_dep'])
 param_dep = dependency('param', fallback: ['param', 'param_dep'])
-m_dep = meson.get_compiler('c').find_library('m', required : false)
-deps = [csp_dep, param_dep, m_dep]
+deps = [csp_dep, param_dep]
 
 c_args = '-DHOSTNAME="@0@"'.format(get_option('hostname'))
 
