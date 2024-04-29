@@ -6,7 +6,7 @@
 
 #define VMEM_IMAGE_BUFFER_HEAD 0x00 // 8 bytes for head
 #define VMEM_IMAGE_BUFFER_TAIL 0x04 // 8 bytes for tail
-#define VMEM_IMAGE_BUFFER_LIST 0x08 // 8 bytes for tail
+#define VMEM_IMAGE_BUFFER_LIST 0x08 // 40 bytes for list
 
 /* Parameters for keeping track of image buffer */
 #define PARAMID_IMAGE_BUFFER_LIST 100
@@ -14,7 +14,7 @@
 #define PARAMID_IMAGE_BUFFER_TAIL 102
 
 /* Define file for storing image buffer */
-VMEM_DEFINE_FILE(buffer, "buffer", "buffer.vmem", 10000000);
+VMEM_DEFINE_FILE(buffer, "buffer", "buffer.vmem", 1000000);
 
 /* Define file for storing ring buffer pointers */
 VMEM_DEFINE_FILE(storage, "storage", "storage.vmem", 1000);
