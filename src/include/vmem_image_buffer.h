@@ -14,7 +14,7 @@
 #define PARAMID_IMAGE_BUFFER_TAIL 102
 
 /* Define file for storing image buffer */
-VMEM_DEFINE_FILE(buffer, "buffer", "buffer.vmem", 1000000);
+VMEM_DEFINE_FILE(buffer, "buffer", "buffer.vmem", 100000000);
 
 /* Define file for storing ring buffer pointers */
 VMEM_DEFINE_FILE(storage, "storage", "storage.vmem", 1000);
