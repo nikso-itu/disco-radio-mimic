@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 	csp_bind_callback(param_serve, PARAM_PORT_SERVER);
 
 	vmem_file_init(&vmem_buffer);
-	vmem_file_init(&vmem_storage);
+	vmem_file_init(&vmem_radio);
 
 	static pthread_t router_handle;
 	pthread_create(&router_handle, NULL, &router_task, NULL);
