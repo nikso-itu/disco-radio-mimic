@@ -1,6 +1,6 @@
 [submodule "lib/csp"]
 	path = lib/csp
-	url = git@github.com:spaceinventor/libcsp.git
+	url = https://github.com/libcsp/libcsp.git
 [submodule "lib/param"]
 	path = lib/param
-	url = git@github.com:spaceinventor/libparam.git
+	url = https://github.com/spaceinventor/libparam.git
