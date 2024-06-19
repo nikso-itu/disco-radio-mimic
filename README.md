@@ -1,2 +1,2 @@
 # disco-radio-mimic
-CSP application that mimics the DISCO-2 radio behaviour, which enables testing.
+Dummy CSP application node (ID: 150) that defines a vmem ring buffer.
